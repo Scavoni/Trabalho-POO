@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class BaseDeDadosPessoa{
+	private static ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
+	
+	public static void adicionar(Pessoa p){
+		pessoas.add(p);
+	}
+	
+	public static void listarPessoas(){
+		for(Pessoa p: pessoas){
+			p.mostrarDados();
+		}
+	}
+	
+	public static void listarClientes(){
+		for(Pessoa p: pessoas){
+			if(p.getClasse().equals("Cliente")){
+				p.mostrarDados();
+			}
+		}
+	}
+	
+	public static void listarFuncionarios(){
+		for(Pessoa p: pessoas){
+			if(p.getClasse().equals("Funcionarios"))
+				p.mostrarDados();
+		}
+	}
+	
+	public static Pessoa pesquisar(String cpf){
+		for(Pessoa p: pessoas){
+			if(p.getCPF().equals(cpf))
+				return p;
+		}
+		return null;
+	}
+	
+	public static boolean remover(String cpf){
+		for(Pessoa p: pessoas){
+			if(p.getCPF().equals(cpf)){
+				pessoas.remove(p);
+				return true;
+			}
+		}
+		return false;
+	}
+}
